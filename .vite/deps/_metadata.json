@@ -1,0 +1,40 @@
+{
+  "hash": "dc3f78e1",
+  "configHash": "ae4877d6",
+  "lockfileHash": "979cf9c8",
+  "browserHash": "e0c0cb53",
+  "optimized": {
+    "@clerk/clerk-react": {
+      "src": "../../node_modules/@clerk/clerk-react/dist/index.mjs",
+      "file": "@clerk_clerk-react.js",
+      "fileHash": "fcbd380c",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "9c49b9c3",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "e528d558",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "4609926a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-WEJJOBXA": {
+      "file": "chunk-WEJJOBXA.js"
+    },
+    "chunk-VCDLJVZS": {
+      "file": "chunk-VCDLJVZS.js"
+    }
+  }
+}
