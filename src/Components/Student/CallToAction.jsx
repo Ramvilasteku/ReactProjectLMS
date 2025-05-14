@@ -1,11 +1,21 @@
-import React from 'react'
+import React from "react";
+import { assets } from "../../assets/assets";
 
 const CallToAction = () => {
   return (
-    <div>
-      <h1>Call  To  Action</h1>
-    </div>
-  )
-}
+    <div className="flex flex-col items-center gap-4 pt-10 pb-24 px-8 md:px-0">
+      <h1 className="text-xl md:text-4xl text-gray-800 font-semibold">Start learning anytime, anywhere, anything</h1>
 
-export default CallToAction
+      <p className=" text-gray-500 sm:text-lg">
+        Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id
+        veniam aliqua proident excepteur commodo doea.
+      </p>
+      <div className="flex items-center font-medium gap-6 mt-4">
+        <button className="px-10 py-3 rounded-4xl text-white bg-orange-600">Get Started</button>
+        <button className="flex font-bold gap-2 items-center hover:text-orange-600">Learn More <img src={assets.arrow_icon} alt="arrow_icon" /></button>
+      </div>
+    </div>
+  );
+};
+
+export default CallToAction;

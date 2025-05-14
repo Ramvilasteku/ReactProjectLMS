@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div
       className={`flex justify-between items-center border-b-3 border-orange-600 sticky top-0 z-5 sm:px-10 px-2 md:px-14 lg:px-32 py-3 ${
-        isCourseListPage ? "bg-white" : "bg-gray-400/90"
+        isCourseListPage ? "bg-white" : "bg-gray-400"
       }`}
     >
       <Link to="/">
@@ -22,7 +22,7 @@ const Navbar = () => {
           onClick={() => navigate("/")}
           src={assets.studynest_logo}
           alt="Logo"
-          className="w-35 lg:w-40 "
+          className="w-30 lg:w-40 "
         />
       </Link>
 
@@ -56,9 +56,8 @@ const Navbar = () => {
         {user && (
           <>
               <button className="cursor-pointer " onClick={()=>{navigate('/educator')}}>
-                {isEducator ? "Educator Dashboard" : "Become Educator"}
-              </button> |
-            <Link to="/my-enrollments">My-Enrollments</Link>
+                {isEducator ? "EduDash" : "Become Educator"}
+              </button>|<Link to="/my-enrollments">MyEnrolls</Link>
           </>
         )}
         {user ? (

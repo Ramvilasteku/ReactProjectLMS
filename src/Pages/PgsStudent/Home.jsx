@@ -3,6 +3,8 @@ import Hero from '../../Components/Student/Hero'
 import Companies from '../../Components/Student/Companies'
 import CouseSection from '../../Components/Student/CouseSection'
 import TestMonialsSection from '../../Components/Student/TestMonialsSection'
+import CallToAction from '../../Components/Student/CallToAction'
+import Footer from '../../Components/Student/Footer'
 
 const Home = () => {
   return (
@@ -11,6 +13,8 @@ const Home = () => {
       <Companies/>
       <CouseSection/>
       <TestMonialsSection/>
+      <CallToAction/>
+      <Footer/>
 
     </div>
   )
