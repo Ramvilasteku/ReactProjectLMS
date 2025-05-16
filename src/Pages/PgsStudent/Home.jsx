@@ -14,6 +14,7 @@ const Home = () => {
       <CouseSection/>
       <TestMonialsSection/>
       <CallToAction/>
+
       <Footer/>
 
     </div>

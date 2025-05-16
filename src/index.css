@@ -2,6 +2,15 @@
 
 @import "tailwindcss";
 
+
+@theme{
+
+}
+.h-section-height  {
+  height: 500px
+}
+
+
 * {
   font-family: "Lora", serif;
 }

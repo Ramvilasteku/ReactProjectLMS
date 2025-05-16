@@ -24,7 +24,7 @@ const CourseDetails = () => {
   return courseData ? (
     <>
       <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left">
-        <div className="absolute top-0 left-0 w-full h-section-height -z-1 bg-gradient-to-b from-gray-400/50"></div>
+        <div className="absolute top-0 left-0 w-full h-section-height -z-1 bg-gradient-to-b from-gray-400/90"></div>
         {/* Left Col */}
         <div>
           <h1>{courseData.courseTitle} </h1>
