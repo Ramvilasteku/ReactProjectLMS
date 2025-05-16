@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets";
 const Footer = () => {
   return (
       <>
-        <div className="absolute w-full h-section-height -z-1 bg-gradient-to-t from-gray-400/90"></div>
+        {/* <div className="absolute w-full h-section-height -z-1 bg-gradient-to-t from-gray-400/90"></div> */}
 
     <footer className="md:px-36 w-full bg-gray-400/90 text-left">
       <div className="flex flex-col md:flex-row items-start px-8 md:px-0 justify-center gap-10 md:gap-32 py-10 border-b border-white/100 ">
