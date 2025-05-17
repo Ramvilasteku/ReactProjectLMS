@@ -1,8 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { dummyCourses } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
-import { humanizerDuration } from "humanize-duration";
-import { TbOmega } from "react-icons/tb";
+import humanizerDuration  from "humanize-duration";
 
 export const AppContext = createContext();
 
@@ -35,7 +34,7 @@ export const AppContextProvider = (props) => {
   }
 
 
-
+// lectureDuration
   //  Function to calculate course chapter time
 
   const calculateChapterTime = (chapter)=>{
@@ -50,12 +49,13 @@ export const AppContextProvider = (props) => {
 
   const calculateCourseDuration = (course) => {
     let time = 0
-    course,courseContent.map((chapter)=> chapter.chapterContent.map(
+    course.courseContent.map((chapter)=> chapter.chapterContent.map(
       (lecture) => time += lecture.lectureDuration
     ))
    return humanizerDuration(time * 60 * 1000,{units: ['h', 'm']}) 
 
   }
+  // lectureDuration
 
     // Function to calculate no of lectures in the course
 
