@@ -3,12 +3,10 @@
 @import "tailwindcss";
 
 
-@theme{
-
-}
 .h-section-height  {
-  height: 500px
+  height: 460px
 }
+
 
 
 * {
