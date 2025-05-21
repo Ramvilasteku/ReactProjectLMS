@@ -4,6 +4,8 @@ import { AppContext } from "../../Context/AppContext";
 import Loading from "../../Components/Student/Loading";
 import { assets } from "../../assets/assets";
 import humanizerDuration from "humanize-duration";
+import Footer from "../../Components/Student/Footer";
+import YouTube from "react-youtube";
 
 const CourseDetails = () => {
   const { id } = useParams();
@@ -12,7 +14,8 @@ const CourseDetails = () => {
 
   const [openSection, setOpenSection] = useState({});
   const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
-  
+  const [playerData, setPlayerData] = useState(null);
+
   // console.log(setCourseData);
 
   const {
@@ -31,7 +34,7 @@ const CourseDetails = () => {
 
   useEffect(() => {
     fetchCourseData();
-  });
+  },[allCourses]);
 
   const toggleSection = (index) => {
     setOpenSection((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -136,7 +139,16 @@ const CourseDetails = () => {
                             <p>{lecture.lectureTitle}</p>
                             <div className="flex gap-2">
                               {lecture.isPreviewFree && (
-                                <p className="text-orange-600 cursor-pointer">
+                                <p
+                                  onClick={() =>
+                                    setPlayerData({
+                                      videoId: lecture.lectureUrl
+                                        .split("/")
+                                        .pop(),
+                                    })
+                                  }
+                                  className="text-orange-600 cursor-pointer"
+                                >
                                   Preview
                                 </p>
                               )}
@@ -170,8 +182,21 @@ const CourseDetails = () => {
 
         {/* RightCol */}
 
-        <div className="max-w-[420px] z-10 shadow-[0px_2px_30px_2px] shadow-orange-600/45 rounded-t md:rounded-none overflow-hidden min-w-[300px] sm:min-w-[420px]">
-          <img src={courseData.courseThumbnail} alt="" />
+        <div className="max-w-[420px] z-10 shadow-[0px_2px_30px_2px] shadow-orange-600/45 rounded-2xl  overflow-hidden min-w-[300px] sm:min-w-[420px]">
+          {playerData ? (
+            <YouTube
+              videoId={playerData.videoId}
+              opts={{
+                playerVars: {
+                  autoplay: 1,
+                },
+              }}
+              iframeClassName="w-full aspect-video"
+            />
+          ) : (
+            <img src={courseData.courseThumbnail} alt="" />
+          )}
+
           <div className="p-5">
             <div className="flex items-center gap-3">
               <img
@@ -202,32 +227,44 @@ const CourseDetails = () => {
             </div>
 
             <div className="flex items-center text-sm md:text-default gap-4 pt-2 md:pt-4 text-gray-500">
-
-               <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1">
                 <img src={assets.star} alt="star icon" />
-                <p>{calculateRating( courseData)}</p>
+                <p>{calculateRating(courseData)}</p>
               </div>
-            <div className="h-4 w-px bg-gray-500/40"></div>
+              <div className="h-4 w-px bg-gray-500/40"></div>
 
-               <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1">
                 <img src={assets.time_clock_icon} alt="star icon" />
-                <p>{calculateCourseDuration( courseData)}</p>
-              </div> 
-              
-                 <div className="h-4 w-px bg-gray-500/90"></div>
-
-               <div className="flex items-center gap-1">
-                <img src={assets.lesson_icon} alt="star icon" />
-                <p>{calculateNoOfLectures( courseData)} lessons</p>
+                <p>{calculateCourseDuration(courseData)}</p>
               </div>
 
+              <div className="h-4 w-px bg-gray-500/90"></div>
+
+              <div className="flex items-center gap-1">
+                <img src={assets.lesson_icon} alt="star icon" />
+                <p>{calculateNoOfLectures(courseData)} lessons</p>
+              </div>
             </div>
 
-                <button className="">{isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Know'}</button>
+            <button className="md:mt-6 mt-4 w-full py-3 rounded-2xl bg-orange-600 text-white font-medium">
+              {isAlreadyEnrolled ? "Already Enrolled" : "Enroll Know"}
+            </button>
 
+            <div>
+              <p>What's in the course?</p>
+              <ul className="ml-4 pt-2 text-sm md:text-default list-disc to-gray-500">
+                <li>Step-by-step, hands-on project guidance.</li>
+                <li>Downloadable resources and source code.</li>
+                <li>Lifetime access with free updates.</li>
+                <li>Quizzes to test your knowledge.</li>
+                <li>Certificate of completion.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   ) : (
     <Loading />
