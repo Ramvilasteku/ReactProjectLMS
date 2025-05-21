@@ -11,7 +11,8 @@ const CourseDetails = () => {
   const [courseData, setCourseData] = useState(null);
 
   const [openSection, setOpenSection] = useState({});
-
+  const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
+  
   // console.log(setCourseData);
 
   const {
@@ -38,7 +39,7 @@ const CourseDetails = () => {
 
   return courseData ? (
     <>
-      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left">
+      <div className="flex lg:flex-row flex-col-reverse gap-10 relative items-start justify-between  md:px-45 px-8 lg:pt-30 pt-20 text-left">
         <div className="absolute top-0 left-0 w-full h-section-height -z-1 bg-gradient-to-b from-gray-400/90"></div>
         {/* Left Col */}
         <div className="max-w-xl z-10 text-gray-500">
@@ -173,15 +174,57 @@ const CourseDetails = () => {
           <img src={courseData.courseThumbnail} alt="" />
           <div className="p-5">
             <div className="flex items-center gap-3">
-            <img className="w-4 h-4" src={assets.time_left_clock_icon} alt="" />
-            <p className="text-orange-600"><span className="font-medium">6 Days</span> left at this price</p>
+              <img
+                className="w-4 h-4"
+                src={assets.time_left_clock_icon}
+                alt=""
+              />
+              <p className="text-orange-600">
+                <span className="font-medium">6 Days</span> left at this price
+              </p>
             </div>
 
             <div className="flex gap-3 items-center pt-2">
-              <p className="text-orange-600 md:text-2xl text-xl font-semibold">{currency} {(courseData.coursePrice - courseData.discount *courseData.coursePrice / 100).toFixed(2)}</p>
-              <p className="md:text-lg text-gray-500 line-through"> {currency} {courseData.coursePrice} </p>
-              <p className="md:text-lg text-gray-500">{courseData.discount}% off</p>
+              <p className="text-orange-600 md:text-4xl text-3xl font-semibold">
+                {currency}{" "}
+                {(
+                  courseData.coursePrice -
+                  (courseData.discount * courseData.coursePrice) / 100
+                ).toFixed(2)}
+              </p>
+              <p className="md:text-lg text-gray-500 line-through">
+                {" "}
+                {currency} {courseData.coursePrice}{" "}
+              </p>
+              <p className="md:text-lg text-gray-500">
+                {courseData.discount}% off
+              </p>
             </div>
+
+            <div className="flex items-center text-sm md:text-default gap-4 pt-2 md:pt-4 text-gray-500">
+
+               <div className="flex items-center gap-1">
+                <img src={assets.star} alt="star icon" />
+                <p>{calculateRating( courseData)}</p>
+              </div>
+            <div className="h-4 w-px bg-gray-500/40"></div>
+
+               <div className="flex items-center gap-1">
+                <img src={assets.time_clock_icon} alt="star icon" />
+                <p>{calculateCourseDuration( courseData)}</p>
+              </div> 
+              
+                 <div className="h-4 w-px bg-gray-500/90"></div>
+
+               <div className="flex items-center gap-1">
+                <img src={assets.lesson_icon} alt="star icon" />
+                <p>{calculateNoOfLectures( courseData)} lessons</p>
+              </div>
+
+            </div>
+
+                <button className="">{isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Know'}</button>
+
           </div>
         </div>
       </div>
